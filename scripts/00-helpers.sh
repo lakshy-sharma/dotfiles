@@ -4,13 +4,20 @@
 # ==============================================================================
 
 # --- Colors ---
-NC='\033[0m'; BOLD='\033[1m'
-GREEN='\033[0;32m'; BLUE='\033[0;34m'; YELLOW='\033[1;33m'; RED='\033[0;31m'
+NC='\033[0m'
+BOLD='\033[1m'
+GREEN='\033[0;32m'
+BLUE='\033[0;34m'
+YELLOW='\033[1;33m'
+RED='\033[0;31m'
 
-info()    { echo -e "${BLUE}${BOLD}[INFO]${NC}  $1"; }
+info() { echo -e "${BLUE}${BOLD}[INFO]${NC}  $1"; }
 success() { echo -e "${GREEN}${BOLD}[OK]${NC}    $1"; }
-warn()    { echo -e "${YELLOW}${BOLD}[WARN]${NC}  $1"; }
-error()   { echo -e "${RED}${BOLD}[ERROR]${NC} $1"; exit 1; }
+warn() { echo -e "${YELLOW}${BOLD}[WARN]${NC}  $1"; }
+error() {
+  echo -e "${RED}${BOLD}[ERROR]${NC} $1"
+  exit 1
+}
 
 # Backup a file if it exists, timestamped
 backup_if_exists() {
@@ -27,6 +34,6 @@ append_if_missing() {
   local line="$1"
   local file="${2:-$HOME/.bashrc}"
   if ! grep -qF "$line" "$file"; then
-    echo "$line" >> "$file"
+    echo "$line" >>"$file"
   fi
 }

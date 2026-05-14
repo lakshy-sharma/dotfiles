@@ -45,8 +45,8 @@ install_delta() {
   fi
   info "Installing Delta (better git diffs)..."
   local VERSION
-  VERSION=$(curl -s "https://api.github.com/repos/dandavison/delta/releases/latest" \
-    | grep -Po '"tag_name": "\K[^"]*')
+  VERSION=$(curl -s "https://api.github.com/repos/dandavison/delta/releases/latest" |
+    grep -Po '"tag_name": "\K[^"]*')
   curl -sLo /tmp/delta.deb \
     "https://github.com/dandavison/delta/releases/latest/download/git-delta_${VERSION}_amd64.deb"
   sudo dpkg -i /tmp/delta.deb

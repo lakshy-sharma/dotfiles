@@ -14,4 +14,11 @@ opt.clipboard = "unnamedplus"
 opt.timeoutlen = 300
 opt.wrap = false
 
-vim.g.mapleader = " "
+vim.g.lazyvim_python_lsp = "basedpyright"
+vim.g.lazyvim_python_ruff = "ruff"
+
+vim.diagnostic.config({
+	virtual_text = false,
+	underline = true,
+	update_in_insert = false,
+})
